@@ -1,0 +1,63 @@
+body{margin:0; padding:10;
+    
+}
+div{
+    margin: 0 auto;
+    display:flex;
+    justify-content:center;
+    width:100%;
+    
+}
+
+header{
+    text-align: center;
+    background-color: black;
+    color:white;
+    margin-top:0;
+}
+.myCheckout{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #fefefe;
+    margin: 0 auto;
+}
+#checkout{
+    visibility: hidden;
+    
+}
+
+#closeButton{
+    color: red;
+    font-weight: 100;
+    font-weight: 1900;
+    opacity: 100;
+    z-index:1;
+    padding-top:15px;
+}
+
+.btn{
+    background-color: black;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 18px;
+    color:white;
+    
+}
+
+#checkout_header{
+    padding-bottom: 25px;
+}
+
+#leftSidebar{
+    float:left;
+}
+
+#rightSidebar{
+    float:right;
+    padding:50px;
+}

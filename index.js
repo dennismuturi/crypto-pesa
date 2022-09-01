@@ -2,8 +2,6 @@
 const div =document.querySelector("div");
 let ul = document.getElementById("coin-list");
 
-ul.style.borderRightStyle="solid"
-ul.style.borderRightColor="black"
 
 let modal = document.getElementById("myModal");
 const closeButton =document.getElementById("closeButton");

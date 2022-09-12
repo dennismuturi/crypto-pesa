@@ -13,8 +13,8 @@ closeButton.style.fontSize="10px";
 function RealTimeChart(){
 
    var chart = LightweightCharts.createChart(document.getElementById("chart"), {
-      width: 600,
-     height: 300,
+      width: 2000,
+     height: 500,
      crosshair: {
          mode: LightweightCharts.CrosshairMode.Normal,
       },
@@ -111,12 +111,16 @@ function RealTimeChart(){
 }   
    
    let chartDetails=document.getElementById("chartDetails")
+   chartDetails.style.backgroundColor="black";
+  
+
    let chartList=document.createElement("ul")
    let chartHeader= document.createElement("h1");
    let chartP= document.createElement("li");
    let chartR = document.createElement("li");
   
-
+    chartP.style.color="white"
+    chartR.style.color="white"
 
    chartHeader.innerText="BTCUSDT";
    chartHeader.style.color='red';

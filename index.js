@@ -3,6 +3,9 @@ const div =document.querySelector("div");
 let ul = document.getElementById("coin-list");
 let moneyInUsd;
 
+const MyWalletList=document.createElement("li");
+
+
 let modal = document.getElementById("myModal");
 const closeButton =document.getElementById("closeButton");
 closeButton.style.fontSize="10px";
@@ -127,7 +130,6 @@ function addCoins(coins)
 
             const checkoutList= document.createElement("ul");
             const baseList =document.createElement("li");
-            const MyWalletList=document.createElement("li");
 
             const dollarSign =document.createElement("span");
             
@@ -157,9 +159,9 @@ function addCoins(coins)
 
             
             
-          
            
             checkoutList.appendChild(baseList);
+            checkoutList.appendChild(MyWalletList);
             
          
           
@@ -221,7 +223,7 @@ document.addEventListener("DOMContentLoaded",(e) =>{
 
    })
      .catch(error =>{
-        alert("error")
+        alert("Kindly, Refresh the Page !!")
      })
    
 
@@ -300,6 +302,8 @@ document.addEventListener("DOMContentLoaded",(e) =>{
         e.preventDefault();
         let amount =parseInt(e.target.parentNode.children[0].value);
         moneyInUsd= amount / 120.40;
+        
+        MyWalletList.innerText=`$ ${moneyInUsd}`;
         InUSD.innerText=`$ ${moneyInUsd}`;
         let display=parseInt(displayAmount.textContent);
         amount= amount + display;

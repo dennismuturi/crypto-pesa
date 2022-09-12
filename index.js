@@ -7,7 +7,90 @@ let modal = document.getElementById("myModal");
 const closeButton =document.getElementById("closeButton");
 closeButton.style.fontSize="10px";
 
+function RealTimeChart(){
+
+   var chart = LightweightCharts.createChart(document.getElementById("chart"), {
+      width: 600,
+     height: 300,
+     crosshair: {
+         mode: LightweightCharts.CrosshairMode.Normal,
+      },
+       layout :{
+           backgroundColor :'#000000',
+           textColor:'#ffffff'
+       },
+       grid : {
+           vertLines :{
+               color:'#404040',
+           },
+           horzLines :{
+               color:'#404040',
+           },
+   
+       },
+    
+   });
+   
+   var data = [];
+   
+   fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=1000")
+   .then(response => response.json())
+   .then(dataArray => {
+        dataArray.map(item => {
+           var timeStamp = new Date(item[6]).getTime() / 1000;
+           barData={
+               time: timeStamp,
+               open: item[1],
+               high: item[2],
+               low:  item[3],
+               close: item[4]
+   
+           };
+           data.push(barData)
+           
+          candleSeries.setData(data);
+           console.log(data)
+        })
+   })
+   .catch(()=>{
+       alert("There is an error!!")
+   })
+   
+   chart.timeScale().fitContent();
+   
+   var candleSeries = chart.addCandlestickSeries();
+   
+   
+   
+     const binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m");
+       binanceSocket.onmessage = (event) => {
+           
+   
+           let messageObject = JSON.parse(event.data)
+           
+            var timeStamp = new Date(messageObject.k.t).getTime() / 1000;
+   
+            let candleData = {
+               time: timeStamp,
+               open: messageObject.k.o,
+               high: messageObject.k.h,
+               low: messageObject.k.l,
+               close: messageObject.k.c,
+               
+           } 
+          data.push(candleData)  
+   
         
+           candleSeries.update(candleData);
+   
+       
+           
+           console.log(data[0].close)
+   
+        
+          
+       }
+}
 
 function addCoins(coins)
 { 
@@ -39,11 +122,13 @@ function addCoins(coins)
          
          
          button.addEventListener("click",(e) =>{
+           
             const checkout =document.getElementById("checkout");
+
             const checkoutList= document.createElement("ul");
             const baseList =document.createElement("li");
             const dollarSign =document.createElement("span");
-           
+             
 
             dollarSign.textContent=` $ `;
             dollarSign.style.fontSize="50px";
@@ -68,9 +153,16 @@ function addCoins(coins)
             baseList.appendChild(dollarSign)
             baseList.appendChild(basePrice);
 
-           
+            
+            
+          
            
             checkoutList.appendChild(baseList);
+            
+         
+          
+            
+
             checkout.appendChild(checkoutList);
             checkout.style.visibility="visible";
             button.disabled=true;
@@ -120,6 +212,11 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      .then(coins => {
       
       addCoins(coins);
+
+      RealTimeChart();
+
+
+
    })
      .catch(error =>{
         alert("error")

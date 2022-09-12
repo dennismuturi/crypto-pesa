@@ -5,7 +5,7 @@
         <meta name="descriptionn" content="Cryptocurrency Price Tracker App"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel ="stylesheet" href="./style.css"/>
-      
+        <script  src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
         <title>Crypto Pesa</title>
     </head>
     <body>
@@ -23,22 +23,25 @@
             <div id= "checkout" class="myCheckout">
               <span id="closeButton" class="close"><button class="btn">&times</button></span>
               <p id="chekout_header"> </p>
-              <div id="chart"></div>
+              
+             
+             
             </div>
 
             <div id="main_div">
-                
+                 
                 <ul id="coin-list">
                     <h1 id="listHeader">Popular Listing:</h1></ul>
                 </ul>
                 <ul id="rightSidebar">
                     <h2>Top 10 Coins 2022</h2>
                 </ul>
+  
+             
             </div>
             </main>
-
+<div style="{margin-top:30}" id="chart"></div>
     </body>
     <script src="index.js" charset="utf-8"></script>
-    <script defer src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
         
 </html>

@@ -89,10 +89,23 @@ function RealTimeChart(){
        
            
            console.log(data[0].close)
+   }
    
-        
-          
-       }
+   let chartDetails=document.getElementById("chart")
+   let chartList=document.createElement("ul")
+   let chartHeader= document.createElement("h1");
+   let chartP= document.createElement("li");
+   let chartR = document.createElement("li");
+
+
+   chartHeader.innerText="BTCUSDT";
+   chartP.innerText="1 minute Chart";
+   chartR.innerText="Real Time Data"
+   
+   chartDetails.appendChild(chartHeader);
+   chartList.appendChild(chartP)
+   chartList.appendChild(chartR)
+   chartDetails.appendChild(chartList);
 }
 
 function addCoins(coins)
@@ -303,7 +316,6 @@ document.addEventListener("DOMContentLoaded",(e) =>{
         let amount =parseInt(e.target.parentNode.children[0].value);
         moneyInUsd= amount / 120.40;
         
-        MyWalletList.innerText=`$ ${moneyInUsd}`;
         InUSD.innerText=`$ ${moneyInUsd}`;
         let display=parseInt(displayAmount.textContent);
         amount= amount + display;

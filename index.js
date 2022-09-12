@@ -1,7 +1,7 @@
 //Crypto currency Price Tracker App
 const div =document.querySelector("div");
 let ul = document.getElementById("coin-list");
-
+let moneyInUsd;
 
 let modal = document.getElementById("myModal");
 const closeButton =document.getElementById("closeButton");
@@ -53,7 +53,7 @@ function RealTimeChart(){
         })
    })
    .catch(()=>{
-       alert("There is an error!!")
+       alert("Kindly, Refresh the Page!!")
    })
    
    chart.timeScale().fitContent();
@@ -127,8 +127,10 @@ function addCoins(coins)
 
             const checkoutList= document.createElement("ul");
             const baseList =document.createElement("li");
+            const MyWalletList=document.createElement("li");
+
             const dollarSign =document.createElement("span");
-             
+            
 
             dollarSign.textContent=` $ `;
             dollarSign.style.fontSize="50px";
@@ -142,7 +144,7 @@ function addCoins(coins)
             basePrice.style.fontSize="50px";
             const addedCoin= coin.name;
             const addedCoinPrice= coin.current_price;
-         
+
             console.log(baseList)
              
             baseCoin.innerText=addedCoin;
@@ -297,7 +299,7 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      addToWallet.addEventListener("click",(e) => {
         e.preventDefault();
         let amount =parseInt(e.target.parentNode.children[0].value);
-        let moneyInUsd= amount / 120.40;
+        moneyInUsd= amount / 120.40;
         InUSD.innerText=`$ ${moneyInUsd}`;
         let display=parseInt(displayAmount.textContent);
         amount= amount + display;

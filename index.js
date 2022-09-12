@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      header.appendChild(walletHead)
    
      header.appendChild(InUSD);
-     
+
      header.appendChild(displayAmount) 
      header.appendChild(add);
 
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      addToWallet.addEventListener("click",(e) => {
         e.preventDefault();
         let amount =parseInt(e.target.parentNode.children[0].value);
-        let moneyInUsd= amount / 120;
+        let moneyInUsd= amount / 120.40;
         InUSD.innerText=`$ ${moneyInUsd}`;
         let display=parseInt(displayAmount.textContent);
         amount= amount + display;

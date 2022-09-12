@@ -248,6 +248,7 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      const form =document.createElement("form");
      const input =document.createElement("input");
      const walletHead=document.createElement("p");
+     const AmountInUSD = document.createElement("p");
      const displayAmount=document.createElement("h3");
      const add=document.createElement("button");
 
@@ -256,6 +257,7 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      add.style.textAlign="center";
      
      walletHead.innerText='My Wallet(KES):'
+     AmountInUSD.innerText='My Wallet in (USD):'
      
      
      add.setAttribute("type","button");
@@ -278,6 +280,7 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      add.setAttribute("type", "submit");
   
      header.appendChild(walletHead)
+     header.appendChild(AmountInUSD)
      header.appendChild(displayAmount) 
      header.appendChild(add);
 

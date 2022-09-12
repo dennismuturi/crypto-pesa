@@ -92,6 +92,7 @@ function RealTimeChart(){
    }
    let quoteList=document.createElement("ul")
    let quoteTitle = document.createElement("li");
+   quoteList.style.color="red";
    quoteTitle.innerText="Quotes";
    quoteTitle.style.listStyle="none";
    quoteList.appendChild(quoteTitle);
@@ -109,7 +110,7 @@ function RealTimeChart(){
           
 }   
    
-   let chartDetails=document.getElementById("chart")
+   let chartDetails=document.getElementById("chartDetails")
    let chartList=document.createElement("ul")
    let chartHeader= document.createElement("h1");
    let chartP= document.createElement("li");

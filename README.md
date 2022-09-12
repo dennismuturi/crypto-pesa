@@ -8,6 +8,7 @@ This app helps you track the latest prices of cryptocurrencies coins in the mark
 2. Track the Top Performing Coins
 3. Add Money to your Wallet
 4. Real Time Chart Data
+5. Real Time Chart quotes
 
 
 

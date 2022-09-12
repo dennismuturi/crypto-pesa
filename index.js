@@ -249,15 +249,17 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      const input =document.createElement("input");
      const walletHead=document.createElement("p");
      const AmountInUSD = document.createElement("p");
+     const InUSD=document.createElement("span");
      const displayAmount=document.createElement("h3");
      const add=document.createElement("button");
+     
 
      displayAmount.style.color="red"
      add.style.backgroundColor="red";
      add.style.textAlign="center";
      
-     walletHead.innerText='My Wallet(KES):'
      AmountInUSD.innerText='My Wallet in (USD):'
+     walletHead.innerText='My Wallet(KES):'
      
      
      add.setAttribute("type","button");
@@ -278,9 +280,12 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      addToWallet.innerText="Load Wallet";
      input.setAttribute("placeholder","Enter amount");
      add.setAttribute("type", "submit");
-  
-     header.appendChild(walletHead)
+     
      header.appendChild(AmountInUSD)
+     header.appendChild(walletHead)
+   
+     header.appendChild(InUSD);
+     
      header.appendChild(displayAmount) 
      header.appendChild(add);
 
@@ -292,6 +297,8 @@ document.addEventListener("DOMContentLoaded",(e) =>{
      addToWallet.addEventListener("click",(e) => {
         e.preventDefault();
         let amount =parseInt(e.target.parentNode.children[0].value);
+        let moneyInUsd= amount / 120;
+        InUSD.innerText=`$ ${moneyInUsd}`;
         let display=parseInt(displayAmount.textContent);
         amount= amount + display;
         displayAmount.innerText=amount;

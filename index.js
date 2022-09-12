@@ -90,22 +90,45 @@ function RealTimeChart(){
            
            console.log(data[0].close)
    }
+   let quoteList=document.createElement("ul")
+   let quoteTitle = document.createElement("li");
+   quoteTitle.innerText="Quotes";
+   quoteTitle.style.listStyle="none";
+   quoteList.appendChild(quoteTitle);
+   let quote = document.createElement("li");
+
+   const detailsSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m");
+         detailsSocket.onmessage = (event) => {
+       
+
+       let messageObject = JSON.parse(event.data)
+       quote.innerText=messageObject.k.q;
+       quoteList.appendChild(quote)
+       
+
+          
+}   
    
    let chartDetails=document.getElementById("chart")
    let chartList=document.createElement("ul")
    let chartHeader= document.createElement("h1");
    let chartP= document.createElement("li");
    let chartR = document.createElement("li");
+  
 
 
    chartHeader.innerText="BTCUSDT";
+   chartHeader.style.color='red';
    chartP.innerText="1 minute Chart";
-   chartR.innerText="Real Time Data"
+   chartR.innerText="Real Time Data";
    
    chartDetails.appendChild(chartHeader);
+
    chartList.appendChild(chartP)
    chartList.appendChild(chartR)
+
    chartDetails.appendChild(chartList);
+   chartDetails.appendChild(quoteList);
 }
 
 function addCoins(coins)
